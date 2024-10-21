@@ -1,0 +1,29 @@
+.product_in_cart{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 80px;
+    padding: 10px 30px;
+    background-color: rgba($color: #409653, $alpha: 0.7);
+    .product_image_and_info{
+        display: flex;
+    }
+    img{
+        width: 100px;
+        height: 100px;
+    }
+    .product_info{
+        margin-left: 30px;
+    }
+    .button_box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button{
+            width: 30px;
+            height: 30px;
+        }
+        p{
+            padding: 20px;
+        }
+    }
+}

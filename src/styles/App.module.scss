@@ -1,0 +1,15 @@
+.app {
+    color: rgba($color: #fcf5f5, $alpha: 0.8);
+    h1 {
+        text-align: center;
+        padding: 30px 0;
+        background-color: rgba(64, 64, 90, 0.5);
+    }
+    position: relative;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+}
+body{
+    background-color: rgba(117, 117, 158, 0.5);
+}

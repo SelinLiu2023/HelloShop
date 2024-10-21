@@ -1,0 +1,16 @@
+.linkStyle{
+    text-decoration: none;
+}
+.categoryCard{
+
+    img{
+        width: 100%;
+    }
+    .categoryTitle{
+        display: block;
+        text-decoration: none;
+        padding: 10px;
+        // text-align: center;
+        color: rgba($color: #0f0f0f, $alpha: 0.8);
+    }
+}

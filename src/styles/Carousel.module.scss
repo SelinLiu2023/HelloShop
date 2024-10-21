@@ -1,0 +1,33 @@
+
+
+
+
+.carouselDisplay{
+    display: flex;
+    position: relative;
+    button{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: 200px;
+        color: white;
+        font-size: xx-large;
+        background-color: rgba($color: #000000, $alpha: 0.3);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    button:nth-of-type(1){
+        left: 30px;
+    }
+    button:nth-of-type(2){
+        right: 30px;
+    }
+    .carousel{
+        display: flex;
+    }
+}

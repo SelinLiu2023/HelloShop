@@ -1,0 +1,17 @@
+.cart_page{
+    padding: 10px 50px;
+    color: #333;
+    .highlight{
+        font-weight: bold;
+        color: rgb(6, 6, 135);
+    }
+    .button_box{
+        margin-bottom: 100px;
+        display: flex;
+        button{
+            font-size: larger;
+            padding: 5px;
+            margin: 10px;
+        }
+    }
+}

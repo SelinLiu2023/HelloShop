@@ -1,0 +1,34 @@
+.single_product_page{
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 60px;
+    width: 60%;
+    img{
+        width: 400px;
+        height: 400px;
+        // margin: 20px;
+    }
+    .product_info{
+        align-items: left;
+    }
+    .button_box{
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 200px;
+
+        button{
+            width: 50px;
+            height: 50px;
+            font-size: x-large;
+        }
+        p{
+            font-size: x-large;
+            color: #333;
+        }
+    }
+}
