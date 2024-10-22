@@ -78,18 +78,29 @@ function reducer(state, action) {
                 ...state,
                 productsInCart: removeProductFromCart(state.productsInCart, action.payload)//产品对象（id, quantity）
             };
-        case 'ADD_PRODUCT_IN_ORDER':
-            const productExists = state.productsInOrder.some(productid => productid === action.payload);
-            if (!productExists) {
-                // 产品不存在，添加到数组
-                return {
-                    ...state,
-                    productsInOrder: [...state.productsInOrder, action.payload]  //产品 id
-                };
-            } else {
-                // 产品已存在，不做任何修改
-                return state;
-            }
+        case 'SELECT_PRODUCT_TO_ORDER':
+            // const productSelected = state.productsInCart.find((item)=>item.id === action.payload);
+            console.log("selected :", action.payload) ; 
+            return {
+                ...state,
+                productsInCart: state.productsInCart.map(product =>
+                    product.id === action.payload ?{ ...product, selected: true} :
+                    product)
+            };
+            case 'UNSELECT_PRODUCT_FROM_ORDER':
+                console.log("unselected :", action.payload) ;
+            return {
+                ...state,
+                productsInCart: state.productsInCart.map(product =>
+                    product.id === action.payload ?{ ...product, selected: false} :
+                    product)
+            };
+            case 'CLEAR_ORDER':
+
+            return {
+                ...state,
+                productsInCart: products.map(product =>({ ...product, selected: false} ))
+            };
             case 'SET_CARTICON_FIXED':
                 return {
                     ...state,

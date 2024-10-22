@@ -1,8 +1,15 @@
+
+.product_in_cart_with_select{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 .product_in_cart{
     display: flex;
     justify-content: space-between;
     margin: 20px 80px;
     padding: 10px 30px;
+    width: 70%;
     background-color: rgba($color: #409653, $alpha: 0.7);
     .product_image_and_info{
         display: flex;
@@ -26,4 +33,13 @@
             padding: 20px;
         }
     }
+}
+.select{
+    width: 10px;
+    height: 10px;
+    border: 1px solid black;
+}
+.select.selected{
+    background-color: black;
+}
 }

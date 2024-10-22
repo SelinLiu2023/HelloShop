@@ -2,14 +2,17 @@ import { useContext, useEffect, useState } from "react";
 import styles from "../styles/CartPage.module.scss"
 import { UserContext } from "../utils/UserContextProvider";
 import { ProductInCartCard } from "../components/ProductInCartCard";
+import { ShowOrder } from "../components/ShowOrder";
 export const CartPage = ()=>{
     const {userInfo, userInfoDispatch} = useContext(UserContext);
     const [isDeliveryFree, setIsDeliveryFree] = useState(false);
+    const [isShowOrder, setShowOrder] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0);
     const shipptingFee = 3.5;
     useEffect(()=>{
-        setTotalPrice(userInfo.productsInCart.reduce((a, item)=> a + item.price * item.quantity, 0));
+        setTotalPrice(userInfo.productsInCart.filter(item=>item.selected === true).reduce((a, item)=> a + item.price * item.quantity, 0));
         console.log("totalprice",userInfo.productsInCart.reduce((a, item)=> a + item.price * item.quantity, 0));
+        console.log("userInfo.productsInCart", userInfo.productsInCart)
         },[userInfo.productsInCart]);
     useEffect(()=>{
             if(totalPrice >= 50){
@@ -23,14 +26,17 @@ export const CartPage = ()=>{
         return ()=>userInfoDispatch({type: "SET_CARTICON_FIXED"});
     }
     ,[]);
+
+    
     console.log(userInfo);
     const isCartEmpty = userInfo.productsInCart.length === 0 ? true : false;
-    const amountPrice = userInfo.productsInCart.reduce((a, item)=> a + item.price * item.quantity, 0);
+    const amountPrice = userInfo.productsInCart.filter(item=>item.selected === true).reduce((a, item)=> a + item.price * item.quantity, 0);
+    const totalQuantity = userInfo.productsInCart.filter(item=>item.selected === true).reduce((a, item)=> a + item.quantity, 0)
     const productsInCartList = userInfo.productsInCart.map(item=>{
         return (
             <div>
                 <div>
-                    <ProductInCartCard productId={item.id}/>
+                    <ProductInCartCard productId={item.id} isInOrder={false}/>
        
                 </div>
  
@@ -38,7 +44,7 @@ export const CartPage = ()=>{
         );
     });
     const handlePurchase = ()=>{
-
+        setShowOrder(true);
     };
     const PurchaseButtons = () => {
         const handleLogin =()=>{
@@ -46,7 +52,7 @@ export const CartPage = ()=>{
         }
         return (
             <div>
-            <p>Total Quantity : <span className={styles.highlight}>{userInfo.productsInCart.length}</span ></p>
+            <p>Total Quantity : <span className={styles.highlight}>{totalQuantity}</span ></p>
             <p>Total Price : <span className={styles.highlight}>{amountPrice.toFixed(2)}</span> Euro</p>
             {!isDeliveryFree && <p style={{color: "grey",fontStyle: "italic" }}>Free shipping on orders over €50.</p>}
             {!isDeliveryFree && <p >Shipping Fee : <span className={styles.highlight}>{shipptingFee} </span >Euro</p>}
@@ -60,7 +66,7 @@ export const CartPage = ()=>{
                 <button onClick={handleLogin}>Login to Purchase</button>
                 <button>Purchase as Guest</button> 
             </div>   :
-            <button>Purchase</button>
+            <button onClick={handlePurchase}>Purchase</button>
             }
           </div>
           </div>
@@ -79,6 +85,9 @@ export const CartPage = ()=>{
             {          
                 !isCartEmpty && 
                 < PurchaseButtons />
+            }
+            {
+                isShowOrder && <ShowOrder/>
             }
         </div>
     );

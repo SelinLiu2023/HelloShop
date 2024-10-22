@@ -15,9 +15,10 @@ export const ProductCard = ({product})=>{
     const handleAddToCart = ()=>{
         userInfoDispatch({type: "ADD_PRODUCT_IN_CART", 
                             payload: product});
+                            
     };
     const handleRemoveFromCart = ()=>{
-            userInfoDispatch({type: "ADD_PRODUCT_IN_CART", 
+            userInfoDispatch({type: "REMOVE_PRODUCT_FROM_CART", 
                         payload: product});
     }
     return (

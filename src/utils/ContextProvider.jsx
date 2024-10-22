@@ -33,7 +33,7 @@ export const ContextProvider = ({children})=>{
             if(!Array.isArray(data) || data.length <= 0){
                 throw new Error("wrong data fetched");
             }
-            // console.log(data);
+            console.log(data);
             const obj = {};
             data.forEach(item => {
                 obj[item] = []

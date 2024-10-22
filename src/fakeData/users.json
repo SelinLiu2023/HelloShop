@@ -6,12 +6,16 @@
         "username": "alice_wonderland",
         "avatarUrl": "https://images.unsplash.com/photo-1519821172144-4f87d85de2a1?q=80&w=1951&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "shippingAddress": {
+          "name":"Wumi Johnson",
+
           "street": "Musterstraße 1",
           "postalCode": "12345",
           "city": "Berlin",
           "country": "Germany"
         },
         "billingAddress": {
+          "name":"Wumi Johnson",
+
           "street": "Musterstraße 1",
           "postalCode": "12345",
           "city": "Berlin",
@@ -39,12 +43,16 @@
         "username": "bob_builder",
         "avatarUrl": "https://images.unsplash.com/photo-1673297180075-411992cad941?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "shippingAddress": {
+          "name":"Wow Superfrau",
+
           "street": "Beispielweg 2",
           "postalCode": "23456",
           "city": "Munich",
           "country": "Germany"
         },
         "billingAddress": {
+          "name":"Wow Superfrau",
+
           "street": "Beispielweg 2",
           "postalCode": "23456",
           "city": "Munich",
@@ -77,12 +85,15 @@
         "username": "charlie_choco",
         "avatarUrl": "https://plus.unsplash.com/premium_photo-1661889099855-b44dc39e88c9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "shippingAddress": {
+          "name":"Jacky Chen",
           "street": "Straße 3",
           "postalCode": "34567",
           "city": "Frankfurt",
           "country": "Germany"
         },
         "billingAddress": {
+          "name":"Jacky Chen",
+
           "street": "Straße 3",
           "postalCode": "34567",
           "city": "Frankfurt",
@@ -110,12 +121,16 @@
         "username": "dave_dreamer",
         "avatarUrl": "https://images.unsplash.com/photo-1723496954926-d6b4c06d9276?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "shippingAddress": {
+          "name":"Sabine Schmidt",
+
           "street": "Weg 4",
           "postalCode": "45678",
           "city": "Hamburg",
           "country": "Germany"
         },
         "billingAddress": {
+          "name":"Sabine Schmidt",
+
           "street": "Weg 4",
           "postalCode": "45678",
           "city": "Hamburg",
@@ -130,12 +145,15 @@
         "username": "eva_eden",
         "avatarUrl": "https://images.unsplash.com/photo-1713105153664-0fd63ecee1ce?q=80&w=1835&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "shippingAddress": {
+          "name":"James Zuckerburg",
           "street": "Chaussee 5",
           "postalCode": "56789",
           "city": "Stuttgart",
           "country": "Germany"
         },
         "billingAddress": {
+          "name":"James Zuckerburg",
+
           "street": "Chaussee 5",
           "postalCode": "56789",
           "city": "Stuttgart",
