@@ -37,7 +37,13 @@ export const CartPage = ()=>{
             </div>
         );
     });
+    const handlePurchase = ()=>{
+
+    };
     const PurchaseButtons = () => {
+        const handleLogin =()=>{
+            userInfoDispatch({type: "TOGGLE_INFO_MODAL"});
+        }
         return (
             <div>
             <p>Total Quantity : <span className={styles.highlight}>{userInfo.productsInCart.length}</span ></p>
@@ -48,8 +54,14 @@ export const CartPage = ()=>{
                 <p >Grand Total Price : <span className={styles.highlight}>{(shipptingFee + totalPrice).toFixed(2)} </span >Euro</p> :
                 <p>Grand Total Price : <span className={styles.highlight}>{totalPrice.toFixed(2)} </span >Euro</p>}
           <div className={styles.button_box}>
-            <button>Login to Purchase</button>
-            <button>Purchase as Guest</button>
+            { 
+            !userInfo.isLogedin ?   
+            <div>   
+                <button onClick={handleLogin}>Login to Purchase</button>
+                <button>Purchase as Guest</button> 
+            </div>   :
+            <button>Purchase</button>
+            }
           </div>
           </div>
         );

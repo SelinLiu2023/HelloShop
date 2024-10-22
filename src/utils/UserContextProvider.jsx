@@ -9,8 +9,9 @@ const initialState = {
     productsInOrder: [],
     totalPriceToPay: 0,
     ordersList: [],
-    isCartIconFixed: true,
+    isCartIconFixed: false,
     isLogedin: false,
+    isLoginModalOpen: false,
 };
 
 function addProductToCart(products, productToAdd) {
@@ -59,6 +60,11 @@ function reducer(state, action) {
                 ...state,
                 user: null,
                 isLogedin: false //用户
+            };
+        case 'TOGGLE_INFO_MODAL':
+            return {
+                ...state,
+                isLoginModalOpen: !state.isLoginModalOpen //用户
             };
         case 'ADD_PRODUCT_IN_CART':
             // console.log('ADD_PRODUCT_IN_CART');

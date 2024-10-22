@@ -6,10 +6,10 @@ import { Modal } from "../components/Modal";
 import { Login } from "./Login";
 import { DropdownMenu } from "./DropdownMenu";
 export const Header = ()=>{
-    const {userInfo} = useContext(UserContext);
+    const {userInfo, userInfoDispatch} = useContext(UserContext);
     const [isDropdownMenuOpen, setDropdownMenuOpen] = useState(false);
     const [isModalOpen, setModalOpen] = useState(false);
-    const toggleModal = () => setModalOpen(!isModalOpen);
+    const toggleModal = () => userInfoDispatch({type: "TOGGLE_INFO_MODAL"});
     const toggleDropdownMenu = () => setDropdownMenuOpen(!isDropdownMenuOpen);
     const cartTotalQuantity = userInfo.productsInCart.reduce((a,item)=>item.quantity + a, 0);
     const handleUserIconClick = ()=>{
@@ -39,12 +39,12 @@ export const Header = ()=>{
                 </NavLink>
 
                 <div to="/user" className={[styles.userInfoIcon, styles.userIcon].join(" ")} onClick={handleUserIconClick}>{userInfo.isLogedin === false ? 
-                "user": 
+                <>&#128100;</> : 
                 <img src={userInfo.user.avatarUrl}/>}
                 </div>
-                <DropdownMenu isOpen={isDropdownMenuOpen} />
-                <Modal isOpen={isModalOpen} close={toggleModal}>
-                    <Login />
+                <DropdownMenu isOpen={isDropdownMenuOpen}  close={toggleDropdownMenu}/>
+                <Modal isOpen={userInfo.isLoginModalOpen} close={toggleModal}>
+                    <Login close={toggleModal}/>
                 </Modal>
             </div>
         </nav>

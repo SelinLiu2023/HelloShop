@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import styles from "../styles/Login.module.scss"
 import users from "../fakeData/users.json";
 import { UserContext } from "../utils/UserContextProvider";
-export const Login = ()=>{
+export const Login = ({close})=>{
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState('');
@@ -13,7 +13,7 @@ export const Login = ()=>{
     if (user) {
       // setLoginStatus(`Hello, ${user.name}!`);
       userInfoDispatch({type: "SET_ACCOUNT", payload: user});
-      setLoginStatus('loged in.');
+      close();
     } else {
       setLoginStatus('Failed to login: Incorrect email or password.');
     }

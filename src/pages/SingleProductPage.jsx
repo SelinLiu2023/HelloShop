@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MyContext } from "../utils/ContextProvider";
 import { UserContext } from "../utils/UserContextProvider";
@@ -37,7 +37,13 @@ export const SingleProductPage = ()=>{
     const handleRemoveFromCart = ()=>{
             userInfoDispatch({type: "ADD_PRODUCT_IN_CART", 
                         payload: product});
-    }
+    };
+    useEffect(()=>{
+        userInfoDispatch({type: "SET_CARTICON_FIXED"});
+        return ()=>{
+            userInfoDispatch({type: "SET_CARTICON_NOT_FIXED"});
+        }
+    }),[];
     return (
 
         <div className={styles.single_product_page}>

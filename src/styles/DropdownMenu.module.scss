@@ -1,0 +1,20 @@
+.dropdown_menu{
+    position: absolute;
+    right: 70px;
+    top: 180px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    
+    .menu_item{
+        background-color: rgba($color: #232385, $alpha: 0.7);
+        height: 45px;
+        border: 0.5px solid #383737;
+        padding: 0px 15px;
+        color: #2d2c2c;
+    }
+    .menu_item:hover{
+        color: whitesmoke;
+    }
+}
