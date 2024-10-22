@@ -56,9 +56,9 @@ export const CartPage = ()=>{
       };
     return(
         <div className={styles.cart_page}>
-            <h2>Dear {userInfo.account === "" ?
+            <h2>Dear {userInfo.user === null ?
                         "Gast" :
-                        userInfo.account} :</h2>
+                        userInfo.user.username} :</h2>
             {          
                 isCartEmpty ? 
                 <p>Your shopping cart is empty.</p> :

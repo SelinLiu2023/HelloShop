@@ -1,34 +1,40 @@
-// Modal.js
-import React from 'react';
-
-export const Login = ({ isOpen, onClose, children }) => {
-  if (!isOpen) return null;
-
+import { useContext, useState } from "react";
+import styles from "../styles/Login.module.scss"
+import users from "../fakeData/users.json";
+import { UserContext } from "../utils/UserContextProvider";
+export const Login = ()=>{
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginStatus, setLoginStatus] = useState('');
+  const {userInfoDispatch} = useContext(UserContext);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const user = users.users.find(u => u.email === email && u.password === password);
+    if (user) {
+      // setLoginStatus(`Hello, ${user.name}!`);
+      userInfoDispatch({type: "SET_ACCOUNT", payload: user});
+      setLoginStatus('loged in.');
+    } else {
+      setLoginStatus('Failed to login: Incorrect email or password.');
+    }
+  };
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'rgba(0, 0, 0, 0.5)', // 半透明背景
-      zIndex: 1000 // 确保遮罩层和模态窗口在内容之上
-    }}>
-      <div style={{
-        padding: 20,
-        background: 'white',
-        borderRadius: 5,
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        zIndex: 1001 // 确保模态窗口在遮罩层之上
-      }}>
-        {children}
-        <button onClick={onClose}>关闭</button>
-      </div>
+    <div className={styles.login}>
+    <form onSubmit={handleLogin}>
+    <label>
+        Username:
+        <input type="email" onChange={e=>setEmail(e.target.value)} value={email} placeholder="Enter Email"/>
+    </label>
+    <label>
+        Password:
+        <input type="password" onChange={e=>setPassword(e.target.value)} value={password} placeholder="Enter Password"/>
+    </label>
+    <div>
+      <button>Registration</button>
+      <button type="submit">Log in</button></div>
+    </form>
+    <p>{loginStatus}</p>
     </div>
   );
+
 };
-
-

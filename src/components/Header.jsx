@@ -1,11 +1,28 @@
 import { NavLink } from "react-router-dom";
 import styles  from "../styles/Header.module.scss";
-import { useContext } from "react";
+import { useContext , useEffect, useState} from "react";
 import { UserContext } from "../utils/UserContextProvider";
+import { Modal } from "../components/Modal";
+import { Login } from "./Login";
+import { DropdownMenu } from "./DropdownMenu";
 export const Header = ()=>{
     const {userInfo} = useContext(UserContext);
-    
+    const [isDropdownMenuOpen, setDropdownMenuOpen] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(false);
+    const toggleModal = () => setModalOpen(!isModalOpen);
+    const toggleDropdownMenu = () => setDropdownMenuOpen(!isDropdownMenuOpen);
     const cartTotalQuantity = userInfo.productsInCart.reduce((a,item)=>item.quantity + a, 0);
+    const handleUserIconClick = ()=>{
+        if(!userInfo.isLogedin){
+            toggleModal();
+        }else{
+          
+            toggleDropdownMenu();
+        }
+    };
+    useEffect(()=>{
+        console.log(isDropdownMenuOpen);
+    },[isDropdownMenuOpen]);
     return(
         <nav className={styles.headerNav}>
             <div className={styles.menuBox}>
@@ -20,7 +37,15 @@ export const Header = ()=>{
                     {userInfo.productsInCart.length > 0 && <div className={styles.countInCart}>{cartTotalQuantity}</div>}
                 🛒
                 </NavLink>
-                <div to="/user" className={styles.userInfoIcon}>👤</div>
+
+                <div to="/user" className={[styles.userInfoIcon, styles.userIcon].join(" ")} onClick={handleUserIconClick}>{userInfo.isLogedin === false ? 
+                "user": 
+                <img src={userInfo.user.avatarUrl}/>}
+                </div>
+                <DropdownMenu isOpen={isDropdownMenuOpen} />
+                <Modal isOpen={isModalOpen} close={toggleModal}>
+                    <Login />
+                </Modal>
             </div>
         </nav>
 

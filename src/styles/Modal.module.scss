@@ -18,4 +18,13 @@
     position: relative;
     z-index: 1001;
   }
-  
+  .close_button{
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    color: #aaa;
+    text-align: center;
+  }
+  .close_button:hover {
+    color: black; /* Darker grey on hover */
+  }

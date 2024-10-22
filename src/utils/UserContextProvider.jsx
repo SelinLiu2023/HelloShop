@@ -3,12 +3,14 @@ import { createContext, useReducer } from "react";
 export const UserContext = createContext();
 
 const initialState = {
-    account: "",
+    // account: "",
+    user: null,
     productsInCart: [],
     productsInOrder: [],
     totalPriceToPay: 0,
     ordersList: [],
     isCartIconFixed: true,
+    isLogedin: false,
 };
 
 function addProductToCart(products, productToAdd) {
@@ -49,7 +51,14 @@ function reducer(state, action) {
         case 'SET_ACCOUNT':
             return {
                 ...state,
-                account: action.payload //用户名
+                user: action.payload,
+                isLogedin: true //用户
+            };
+        case 'REMOVE_ACCOUNT':
+            return {
+                ...state,
+                user: null,
+                isLogedin: false //用户
             };
         case 'ADD_PRODUCT_IN_CART':
             // console.log('ADD_PRODUCT_IN_CART');

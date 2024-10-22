@@ -5,7 +5,11 @@
     justify-content: center;
     align-items: center;
     margin: 0 60px;
+    padding: 20px;
     width: 60%;
+    background-color: rgba($color: 
+    #749a76, $alpha: 0.5);
+    border: 0.5px solid rgb(91, 87, 87);
     img{
         width: 400px;
         height: 400px;
@@ -19,7 +23,7 @@
         gap: 20px;
         justify-content: center;
         align-items: center;
-        margin-bottom: 200px;
+        margin-bottom: 150px;
 
         button{
             width: 50px;

@@ -1,0 +1,149 @@
+{
+    "users": [
+      {
+        "email": "user1@example.com",
+        "password": "password1",
+        "username": "alice_wonderland",
+        "avatarUrl": "https://images.unsplash.com/photo-1519821172144-4f87d85de2a1?q=80&w=1951&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "shippingAddress": {
+          "street": "Musterstraße 1",
+          "postalCode": "12345",
+          "city": "Berlin",
+          "country": "Germany"
+        },
+        "billingAddress": {
+          "street": "Musterstraße 1",
+          "postalCode": "12345",
+          "city": "Berlin",
+          "country": "Germany"
+        },
+        "completedOrders": [
+          {
+            "orderId": "1001",
+            "orderDate": "2021-06-01",
+            "totalAmount": 120.00,
+            "items": [
+              {
+                "itemName": "Item 1",
+                "quantity": 1,
+                "pricePerItem": 120.00
+              }
+            ]
+          }
+        ],
+        "ongoingOrders": []
+      },
+      {
+        "email": "user2@example.com",
+        "password": "password2",
+        "username": "bob_builder",
+        "avatarUrl": "https://images.unsplash.com/photo-1673297180075-411992cad941?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "shippingAddress": {
+          "street": "Beispielweg 2",
+          "postalCode": "23456",
+          "city": "Munich",
+          "country": "Germany"
+        },
+        "billingAddress": {
+          "street": "Beispielweg 2",
+          "postalCode": "23456",
+          "city": "Munich",
+          "country": "Germany"
+        },
+        "completedOrders": [],
+        "ongoingOrders": [
+          {
+            "orderId": "1002",
+            "orderDate": "2021-06-15",
+            "estimatedDelivery": "2021-06-20",
+            "items": [
+              {
+                "itemName": "Item 2",
+                "quantity": 2,
+                "pricePerItem": 45.00
+              },
+              {
+                "itemName": "Item 3",
+                "quantity": 1,
+                "pricePerItem": 30.00
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "email": "user3@example.com",
+        "password": "password3",
+        "username": "charlie_choco",
+        "avatarUrl": "https://plus.unsplash.com/premium_photo-1661889099855-b44dc39e88c9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "shippingAddress": {
+          "street": "Straße 3",
+          "postalCode": "34567",
+          "city": "Frankfurt",
+          "country": "Germany"
+        },
+        "billingAddress": {
+          "street": "Straße 3",
+          "postalCode": "34567",
+          "city": "Frankfurt",
+          "country": "Germany"
+        },
+        "completedOrders": [
+          {
+            "orderId": "1003",
+            "orderDate": "2021-05-21",
+            "totalAmount": 180.00,
+            "items": [
+              {
+                "itemName": "Item 4",
+                "quantity": 3,
+                "pricePerItem": 60.00
+              }
+            ]
+          }
+        ],
+        "ongoingOrders": []
+      },
+      {
+        "email": "user4@example.com",
+        "password": "password4",
+        "username": "dave_dreamer",
+        "avatarUrl": "https://images.unsplash.com/photo-1723496954926-d6b4c06d9276?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "shippingAddress": {
+          "street": "Weg 4",
+          "postalCode": "45678",
+          "city": "Hamburg",
+          "country": "Germany"
+        },
+        "billingAddress": {
+          "street": "Weg 4",
+          "postalCode": "45678",
+          "city": "Hamburg",
+          "country": "Germany"
+        },
+        "completedOrders": [],
+        "ongoingOrders": []
+      },
+      {
+        "email": "user5@example.com",
+        "password": "password5",
+        "username": "eva_eden",
+        "avatarUrl": "https://images.unsplash.com/photo-1713105153664-0fd63ecee1ce?q=80&w=1835&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "shippingAddress": {
+          "street": "Chaussee 5",
+          "postalCode": "56789",
+          "city": "Stuttgart",
+          "country": "Germany"
+        },
+        "billingAddress": {
+          "street": "Chaussee 5",
+          "postalCode": "56789",
+          "city": "Stuttgart",
+          "country": "Germany"
+        },
+        "completedOrders": [],
+        "ongoingOrders": []
+      }
+    ]
+  }
+  
