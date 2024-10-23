@@ -6,92 +6,119 @@ import { ShowOrder } from "../components/ShowOrder";
 import { Modal } from "../components/Modal";
 export const CartPage = ()=>{
     const {userInfo, userInfoDispatch} = useContext(UserContext);
-    const [isDeliveryFree, setIsDeliveryFree] = useState(false);
-    const [isShowOrder, setShowOrder] = useState(false);
-    const [totalPrice, setTotalPrice] = useState(0);
-    const shipptingFee = 3.5;
-    useEffect(()=>{
-        setTotalPrice(userInfo.productsInCart.filter(item=>item.selected === true).reduce((a, item)=> a + item.price * item.quantity, 0));
-        console.log("totalprice",userInfo.productsInCart.reduce((a, item)=> a + item.price * item.quantity, 0));
-        console.log("userInfo.productsInCart", userInfo.productsInCart)
-        },[userInfo.productsInCart]);
-    useEffect(()=>{
-            if(totalPrice >= 50){
-                setIsDeliveryFree(true);
-            }else{
-                setIsDeliveryFree(false);
-            }
-        }, [totalPrice]);
+    const [order, setOrder] = useState({
+        isShowOrder: false,
+        username: "",
+        shippingAddress :{},
+        billingAddress : {},
+        deliveryMethod : {},
+        payMethod : {},
+        products : [],
+        isFreeDelivery: false,
+        totalQuantity : 0,
+        totalPrice: 0,
+        grandPrice: 0,
+        shipptingFee : 3.5,
+        minPriceForFreeShipping : 50,
+        date: "",
+        hour: "",
+        minute: "",
+    });
+    const isCartEmpty = userInfo.productsInCart.length === 0 ? true : false;
+
     useEffect(()=>{
         userInfoDispatch({type: "SET_CARTICON_NOT_FIXED"});
         return ()=>userInfoDispatch({type: "SET_CARTICON_FIXED"});
     }
     ,[]);
+    useEffect(()=>{
+        console.log(userInfo)
+    },[userInfo]);
+    useEffect(()=>{
+        const totalPrice = userInfo.productsInCart.filter(item=>item.selected === true).reduce((a, item)=> a + item.price * item.quantity, 0);
+        const freeDelivery = (totalPrice >= order.minPriceForFreeShipping) ?
+                                true:
+                                false;
+        setOrder({
+            ...order,
+            totalPrice: totalPrice,
+            isFreeDelivery: freeDelivery,
+            totalQuantity: userInfo.productsInCart.filter(item=>item.selected === true).reduce((a, item)=> a + item.quantity, 0),
+            grandPrice: freeDelivery ? totalPrice : (totalPrice + order.shipptingFee),
+            products:userInfo.productsInCart.filter(item=>item.selected === true)
+        });
+        },[userInfo.productsInCart]);
 
-    
-    console.log(userInfo);
-    const isCartEmpty = userInfo.productsInCart.length === 0 ? true : false;
-    const amountPrice = userInfo.productsInCart.filter(item=>item.selected === true).reduce((a, item)=> a + item.price * item.quantity, 0);
-    const totalQuantity = userInfo.productsInCart.filter(item=>item.selected === true).reduce((a, item)=> a + item.quantity, 0)
-    const productsInCartList = userInfo.productsInCart.map(item=>{
+    const handlePurchase = ()=>{
+            setOrder({
+            ...order,
+            isShowOrder: true,
+        });
+    };
+
+    const closeShowOrder = ()=>{
+        setOrder({
+            ...order,
+            isShowOrder: false,
+        });
+    };
+    const ProductsInCartList = userInfo.productsInCart.map(item=>{
         return (
-            <div>
-                <div>
-                    <ProductInCartCard productId={item.id} isInOrder={false}/>
-       
-                </div>
- 
+            <div key={item.id}>
+                <ProductInCartCard 
+                    productId={item.id} 
+                    isInOrder={false}
+                />
             </div>
         );
     });
-    const handlePurchase = ()=>{
-        setShowOrder(true);
-    };
-    const closeShowOrder = ()=>{
-        setShowOrder(false);
-    };
+
     const PurchaseButtons = () => {
         const handleLogin =()=>{
             userInfoDispatch({type: "TOGGLE_INFO_MODAL"});
         }
         return (
             <div>
-            <p>Total Quantity : <span className={styles.highlight}>{totalQuantity}</span ></p>
-            <p>Total Price : <span className={styles.highlight}>{amountPrice.toFixed(2)}</span> Euro</p>
-            {!isDeliveryFree && <p style={{color: "grey",fontStyle: "italic" }}>Free shipping on orders over €50.</p>}
-            {!isDeliveryFree && <p >Shipping Fee : <span className={styles.highlight}>{shipptingFee} </span >Euro</p>}
-            {!isDeliveryFree ?
-                <p >Grand Total Price : <span className={styles.highlight}>{(shipptingFee + totalPrice).toFixed(2)} </span >Euro</p> :
-                <p>Grand Total Price : <span className={styles.highlight}>{totalPrice.toFixed(2)} </span >Euro</p>}
-          <div className={styles.button_box}>
-            { 
-            !userInfo.isLogedin ?   
-            <div>   
-                <button onClick={handleLogin}>Login to Purchase</button>
-                <button>Purchase as Guest</button> 
-            </div>   :
-            <button onClick={handlePurchase}>Purchase</button>
-            }
-          </div>
-          </div>
+                <p>Total Quantity : <span className={styles.highlight}>{order.totalQuantity}</span ></p>
+
+                <p>Total Price : <span className={styles.highlight}>{order.totalPrice.toFixed(2)}</span> Euro</p>
+
+                {!order.isFreeDelivery && <p style={{color: "grey",fontStyle: "italic" }}>Free shipping on orders over €50.</p>}
+
+                {!order.isFreeDelivery && <p >Shipping Fee : <span className={styles.highlight}>{order.shipptingFee} </span >Euro</p>}
+
+                <p >Grand Total Price : <span className={styles.highlight}>{(order.grandPrice).toFixed(2)} </span >Euro</p> 
+
+                <div className={styles.button_box}>
+                { 
+                    !userInfo.isLogedin ?   
+                    <div>   
+                        <button onClick={handleLogin}>Login to Purchase</button>
+                        <button>Purchase as Guest</button> 
+                    </div>   :
+                    <button onClick={handlePurchase}>Purchase</button>
+                }
+                </div>
+            </div>
         );
-      };
+    };
+
     return(
         <div className={styles.cart_page}>
             <h2>Dear {userInfo.user === null ?
-                        "Gast" :
+                        "Customer" :
                         userInfo.user.username} :</h2>
             {          
                 isCartEmpty ? 
                 <p>Your shopping cart is empty.</p> :
-                productsInCartList
+                ProductsInCartList
             }
             {          
                 !isCartEmpty && 
                 < PurchaseButtons />
             }
-            <Modal isOpen={isShowOrder} close={closeShowOrder}>
-                <ShowOrder />
+            <Modal isOpen={order.isShowOrder} close={closeShowOrder}>
+                <ShowOrder order={order} setOrder={setOrder}/>
             </Modal>
         </div>
     );

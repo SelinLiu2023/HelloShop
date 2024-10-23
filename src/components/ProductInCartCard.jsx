@@ -44,9 +44,9 @@ export const ProductInCartCard = ({productId, isInOrder})=>{
         }
 
     },[isSelected]);
-    useEffect(()=>{
-        console.log("productsInOrder:",userInfo.productsInOrder);
-    },[userInfo]);
+    // useEffect(()=>{
+    //     console.log("productsInOrder:",userInfo.productsInOrder);
+    // },[userInfo]);
 
     return (
     <div className={styles.product_in_cart_with_select}>

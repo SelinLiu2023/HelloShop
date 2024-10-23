@@ -12,8 +12,8 @@ export const ContextProvider = ({children})=>{
     const getProductById = (productId)=>{
 
         let productFound = null;
-        console.log("productId in getProductById",productId);
-        console.log("productsContext in getProductById", productsContext)
+        // console.log("productId in getProductById",productId);
+        // console.log("productsContext in getProductById", productsContext)
         for(let key in productsContext){
             productFound = productsContext[key].find(product => product.id == productId);//必须使用==
             if(productFound){
@@ -25,7 +25,7 @@ export const ContextProvider = ({children})=>{
     const fetchCategoties = async (url)=>{
         try{
             const response = await fetch(url);
-            console.log(response);
+            // console.log(response);
             if(!response.ok){
                 throw new Error("fetch failed");
             }
@@ -33,7 +33,7 @@ export const ContextProvider = ({children})=>{
             if(!Array.isArray(data) || data.length <= 0){
                 throw new Error("wrong data fetched");
             }
-            console.log(data);
+            // console.log(data);
             const obj = {};
             data.forEach(item => {
                 obj[item] = []
@@ -50,10 +50,10 @@ export const ContextProvider = ({children})=>{
     };
     const fetchProducts = async (category)=>{
         const url = `https://fakestoreapi.com/products/category/${category}`;
-        console.log(url);
+        // console.log(url);
         try{
             const response = await fetch(url);
-            console.log(response);
+            // console.log(response);
             if(!response.ok){
                 throw new Error("fetch failed");
             }
@@ -61,7 +61,7 @@ export const ContextProvider = ({children})=>{
             if(!Array.isArray(data) || data.length <= 0){
                 throw new Error("wrong data fetched");
             }
-            console.log(data);
+            // console.log(data);
 
             setProductsContext(prev=>({
                 ...prev,
@@ -85,9 +85,9 @@ export const ContextProvider = ({children})=>{
         (Object.keys(productsContext).length === 0) && fetchCategoties(url);
     }),[];
 
-    useEffect(()=>{
-      console.log("productsContext", productsContext)
-    }),[productsContext];
+    // useEffect(()=>{
+    //   console.log("productsContext", productsContext)
+    // }),[productsContext];
 
     return (
         <MyContext.Provider value={{productsContext, fetchProducts, getProductById}}>

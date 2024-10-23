@@ -17,23 +17,23 @@ const initialState = {
 function addProductToCart(products, productToAdd) {
     const existingProduct = products.find(product => product.id === productToAdd.id);
     if (existingProduct) {
-        console.log("products", products);
+        // console.log("products", products);
 
-        console.log("exist");
+        // console.log("exist");
         // 如果产品已存在于购物车中，增加数量
         return products.map(product =>
             product.id === productToAdd.id ? { ...product, quantity: product.quantity + 1 } : product
         );
     } else {
-        console.log("products", products);
-        console.log("new");
+        // console.log("products", products);
+        // console.log("new");
         // 如果产品不在购物车中，添加新产品
         return [...products, { ...productToAdd, quantity: 1 }];
     }
 }
 function removeProductFromCart(products, productToremove) {
     const existingProduct = products.find(product => product.id === productToremove.id);
-    console.log("productToremove, " , productToremove);
+    // console.log("productToremove, " , productToremove);
     if (existingProduct && existingProduct.quantity > 1) {
         // 如果产品已存在于购物车中，减少数量
         return products.map(product =>
@@ -74,14 +74,14 @@ function reducer(state, action) {
                 productsInCart: addProductToCart(state.productsInCart, action.payload) //产品对象（id, quantity）
             };
         case 'REMOVE_PRODUCT_FROM_CART':
-            console.log('REMOVE_PRODUCT_FROM_CART')
+            // console.log('REMOVE_PRODUCT_FROM_CART')
             return {
                 ...state,
                 productsInCart: removeProductFromCart(state.productsInCart, action.payload)//产品对象（id, quantity）
             };
         case 'SELECT_PRODUCT_TO_ORDER':
             // const productSelected = state.productsInCart.find((item)=>item.id === action.payload);
-            console.log("selected :", action.payload) ; 
+            // console.log("selected :", action.payload) ; 
             return {
                 ...state,
                 productsInCart: state.productsInCart.map(product =>
@@ -89,7 +89,7 @@ function reducer(state, action) {
                     product)
             };
             case 'UNSELECT_PRODUCT_FROM_ORDER':
-                console.log("unselected :", action.payload) ;
+                // console.log("unselected :", action.payload) ;
             return {
                 ...state,
                 productsInCart: state.productsInCart.map(product =>
@@ -100,7 +100,11 @@ function reducer(state, action) {
 
             return {
                 ...state,
-                productsInCart: products.map(product =>({ ...product, selected: false} ))
+                productsInCart: state.productsInCart.filter(product =>(product.selected === false)),
+                ordersList: [
+                    ...state.ordersList,
+                    action.payload
+                ]
             };
             case 'SET_CARTICON_FIXED':
                 return {

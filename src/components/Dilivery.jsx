@@ -5,10 +5,9 @@ const shippingOptions = [
     { id: 'dhlPrime', name: 'DHL Prime', cost: '7€', deliveryTime: '1 days' },
     { id: 'hermes', name: 'Hermes', cost: '5€', deliveryTime: '3-5 days' }
   ];
-export const Delivery = ({setOrderStep})=>{
+export const Delivery = ({order, setOrderStep,setOrder})=>{
  // 使用 React 的 useState 钩子来跟踪当前选择的快递方式
  const [selectedOption, setSelectedOption] = useState(shippingOptions[0].id);
-
  // 处理单选按钮变更
  const handleOptionChange = (event) => {
    setSelectedOption(event.target.value);
@@ -18,6 +17,11 @@ export const Delivery = ({setOrderStep})=>{
     };
     const handleNextStep = ()=>{
         setOrderStep(step => step + 1);
+        setOrder({
+          ...order,
+          // deliveryMethod:shippingOptions[selectedOption],
+          deliveryMethod:shippingOptions.find(item=>item.id === selectedOption),
+      });
     };
     return(
         <div className={styles.container_order}>
