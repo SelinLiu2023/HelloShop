@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../utils/UserContextProvider";
+import styles from "../styles/ShowOrder.module.scss";
 
-export const UserAddress = ({ user})=>{
+export const UserAddress = ({ user, setOrderStep})=>{
     const [isDisabled, setIsDisabled] = useState(true);
     const [inputUser, setInputUser] = useState(user);
     const [buttonChangeToSave, setButtonChangeToSave] = useState(false);
+    const {userInfoDispatch} = useContext(UserContext);
     const handleEditClick = ()=>{
             setIsDisabled(false);
             setButtonChangeToSave(true);
@@ -13,20 +16,26 @@ export const UserAddress = ({ user})=>{
         setInputUser(inputUser=>({
             ...inputUser,
             [addressType]:{
-                ...[addressType],
+                ...inputUser[addressType],
                 [address]: e.target.value,
             }
         }));
     };
+    useEffect(()=>{
+        console.log("inputUser", inputUser);
+    },[inputUser]);
+    const handlePreviousStep = ()=>{
+        setOrderStep(step => step - 1);
+    };
+    const handleNextStep = ()=>{
+        setOrderStep(step => step + 1);
+    };
     const handleSaveClick = ()=>{
+        userInfoDispatch({type: "SET_ACCOUNT", payload: {...inputUser}});
+    };
 
-    };
-    const handleSubmit = (e)=>{
-        e.preventDefault();
-    };
         return(
-            <div>
-                <form onSubmit={handleSubmit}>
+            <div className={styles.container_order}>
                 <div>
                     <p>Shipping Address :</p>
                     <label for="shippingAddress_name">Name :
@@ -75,7 +84,7 @@ export const UserAddress = ({ user})=>{
                     <label for="billingAddress_name">Name :
                         <input name="billingAddress_name"
                                 type="text"
-                                value = {inputUser.shippingAddress.name}
+                                value = {inputUser.billingAddress.name}
                                 onChange = {handleInputChange}
 
                                 disabled={isDisabled} />
@@ -109,13 +118,14 @@ export const UserAddress = ({ user})=>{
                                 disabled={true} />
                     </label>
                 </div>
-                {
-                    buttonChangeToSave ?
-                    <button type="button" onClick={handleSaveClick}>Save</button> :
-                    <button type="button" onClick={handleEditClick}>Edit</button>
-                }
-                <button type="submit">Submit</button>
-                </form>
+                <div className={styles.buttons_box}>
+                    <button className={styles.button}onClick={handlePreviousStep}>Prev</button>                    {
+                        buttonChangeToSave ?
+                        <button onClick={handleSaveClick} className={styles.button}>Save</button > :
+                        <button  onClick={handleEditClick}  className={styles.button}>Edit</button>
+                    }
+                    <button className={styles.button}onClick={handleNextStep}>Next</button>
+                </div>
             </div>
         );
 };

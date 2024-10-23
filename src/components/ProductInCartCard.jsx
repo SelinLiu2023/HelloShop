@@ -62,9 +62,9 @@ export const ProductInCartCard = ({productId, isInOrder})=>{
                     </div>
                 </div>
                 <div className={styles.button_box}>   
-                    <button onClick={decrementQuantity}>-</button>
+                    <button onClick={decrementQuantity} disabled={isInOrder}>-</button>
                     <p>{productInCart.quantity}</p>
-                    <button onClick={incrementQuantity} >+</button>
+                    <button onClick={incrementQuantity} disabled={isInOrder}>+</button>
                 </div>
             </div>
     </div>

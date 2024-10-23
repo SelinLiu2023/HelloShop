@@ -3,6 +3,7 @@ import styles from "../styles/CartPage.module.scss"
 import { UserContext } from "../utils/UserContextProvider";
 import { ProductInCartCard } from "../components/ProductInCartCard";
 import { ShowOrder } from "../components/ShowOrder";
+import { Modal } from "../components/Modal";
 export const CartPage = ()=>{
     const {userInfo, userInfoDispatch} = useContext(UserContext);
     const [isDeliveryFree, setIsDeliveryFree] = useState(false);
@@ -46,6 +47,9 @@ export const CartPage = ()=>{
     const handlePurchase = ()=>{
         setShowOrder(true);
     };
+    const closeShowOrder = ()=>{
+        setShowOrder(false);
+    };
     const PurchaseButtons = () => {
         const handleLogin =()=>{
             userInfoDispatch({type: "TOGGLE_INFO_MODAL"});
@@ -86,9 +90,9 @@ export const CartPage = ()=>{
                 !isCartEmpty && 
                 < PurchaseButtons />
             }
-            {
-                isShowOrder && <ShowOrder/>
-            }
+            <Modal isOpen={isShowOrder} close={closeShowOrder}>
+                <ShowOrder />
+            </Modal>
         </div>
     );
 

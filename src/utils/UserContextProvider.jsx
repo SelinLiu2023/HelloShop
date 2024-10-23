@@ -52,7 +52,7 @@ function reducer(state, action) {
         case 'SET_ACCOUNT':
             return {
                 ...state,
-                user: action.payload,
+                user: {...action.payload},
                 isLogedin: true //用户
             };
         case 'REMOVE_ACCOUNT':
@@ -61,6 +61,7 @@ function reducer(state, action) {
                 user: null,
                 isLogedin: false //用户
             };
+ 
         case 'TOGGLE_INFO_MODAL':
             return {
                 ...state,
