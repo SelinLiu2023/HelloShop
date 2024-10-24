@@ -7,6 +7,9 @@ import { AboutPage } from "../pages/AboutPage";
 import { ProductsPage } from "../pages/ProductsPage";
 import { UserPage } from "../pages/UserPage";
 import { CartPage } from "../pages/CartPage";
+import { TraceCurrentOrdersPage } from "../pages/TraceCurrentOrdersPage";
+import { HistoryOrdersPage } from "../pages/HistoryOrdersPage";
+import { SignUpPage } from "../pages/SignUpPage";
 
 export const AppRouter = createBrowserRouter([
         {
@@ -40,8 +43,19 @@ export const AppRouter = createBrowserRouter([
                 {
                     element:<SingleProductPage />,
                     path:"/products/:id"
-                }
-
+                },
+                {
+                    element: <TraceCurrentOrdersPage />,
+                    path: "currentorders",
+                },
+                {
+                    element: <HistoryOrdersPage />,
+                    path: "historyorders",
+                },
+                {
+                    element: <SignUpPage />,
+                    path: "signup",
+                },
             ]
         }
     ]);

@@ -1,6 +1,7 @@
 import { useContext, useRef, useEffect } from "react";
 import styles from "../styles/DropdownMenu.module.scss";
 import { UserContext } from "../utils/UserContextProvider";
+import { NavLink } from "react-router-dom";
 
 export const DropdownMenu = ({isOpen, close})=>{
     if(!isOpen) return null;
@@ -26,8 +27,8 @@ export const DropdownMenu = ({isOpen, close})=>{
 
     return(
         <div className={styles.dropdown_menu} ref={menuRef}>
-            <div className={styles.menu_item}><p>Trace Orders</p></div>
-            <div className={styles.menu_item}><p>Orders in History</p></div>
+            <NavLink to={"/currentorders"} className={styles.menu_item}><p>Trace Orders</p></NavLink>
+            <NavLink to={"/historyorders"} className={styles.menu_item}><p>Orders in History</p></NavLink>
             <div className={styles.menu_item}><p>Setting</p></div>
             <div className={styles.menu_item} onClick={handleLogout}><p>Log Out</p></div>
         </div>

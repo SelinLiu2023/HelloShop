@@ -9,6 +9,7 @@ const initialState = {
     productsInOrder: [],
     totalPriceToPay: 0,
     ordersList: [],
+    historyOrdersList: [],
     isCartIconFixed: false,
     isLogedin: false,
     isLoginModalOpen: false,
@@ -103,7 +104,17 @@ function reducer(state, action) {
                 productsInCart: state.productsInCart.filter(product =>(product.selected === false)),
                 ordersList: [
                     ...state.ordersList,
-                    action.payload
+                    action.payload,
+                ]
+            };
+            case 'ORDER_CONFIRMED':
+                console.log("ORDER_CONFIRMED");
+            return {
+                ...state,
+                ordersList: state.ordersList.filter(order =>(order.orderNumber !== action.payload.orderNumber)),
+                historyOrdersList: [
+                    ...state.historyOrdersList,
+                    action.payload,
                 ]
             };
             case 'SET_CARTICON_FIXED':

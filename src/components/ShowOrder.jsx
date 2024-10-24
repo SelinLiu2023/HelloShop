@@ -16,19 +16,18 @@ export const ShowOrder = ({order, setOrder})=>{
         const hashBuffer = await crypto.subtle.digest('SHA-256', data);
         const hashArray = Array.from(new Uint8Array(hashBuffer)); // 转换为字节
         const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // 转换为十六进制
-        // order.orderNumber = hashHex;
         return hashHex;
     }
-    useEffect(()=>{
-        setOrder({
-            ...order,
-            username: userInfo.user.username,
-            orderNumber: generateOrderNumber(userInfo.user.email),
-        }
-
-        )
-    },[]);
-    // generateOrderNumber(userInfo.user.email).then(console.log);
+    useEffect(() => {
+        // 确保generateOrderNumber函数调用完成后再设置状态
+        generateOrderNumber(userInfo.user.email).then(orderNumber => {
+            setOrder(prevOrder => ({
+                ...prevOrder,
+                username: userInfo.user.username,
+                orderNumber: orderNumber,
+            }));
+        });
+    }, []);
 
     return(
         <div className={styles.show_order}>

@@ -8,6 +8,7 @@ export const CartPage = ()=>{
     const {userInfo, userInfoDispatch} = useContext(UserContext);
     const [order, setOrder] = useState({
         isShowOrder: false,
+        orderNumber:"",
         username: "",
         shippingAddress :{},
         billingAddress : {},
@@ -26,11 +27,7 @@ export const CartPage = ()=>{
     });
     const isCartEmpty = userInfo.productsInCart.length === 0 ? true : false;
 
-    useEffect(()=>{
-        userInfoDispatch({type: "SET_CARTICON_NOT_FIXED"});
-        return ()=>userInfoDispatch({type: "SET_CARTICON_FIXED"});
-    }
-    ,[]);
+  
     useEffect(()=>{
         console.log(userInfo)
     },[userInfo]);
