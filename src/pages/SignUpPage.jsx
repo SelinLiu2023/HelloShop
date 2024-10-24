@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LabelPassword } from "../components/LabelPassword";
+import styles from "../styles/SignUpPage.module.scss";
+import users from "../fakeData/users.json";
+import { UserContext } from "../utils/UserContextProvider";
 
 export const SignUpPage = ()=>{
+    const {userInfoDispatch} = useContext(UserContext);
     // const [usernameAndPassword, setUsernameAndPassword] = useState({
     //     username: "",
     //     password: "",
     //     rePassword: "",
     // });
     // const [isDisable, setIsDisable] = useState(!isEdible);
-    const [errorMessage, setIsErrorMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     // const [showPassword, setShowPassword] = useState(false);
     // const [showRePassword, setShowRePassword] = useState(false);
     const [password, setPassword] = useState("");
@@ -18,23 +22,38 @@ export const SignUpPage = ()=>{
     const handleInputChange = (e)=>{
         setUserAccount(e.currentTarget.value);
     };
+    // useEffect(()=>{
+    //     console.log("itemCount",itemCount);
+    // },[itemCount]);
     useEffect(()=>{
         setIsSuccesfulSignUp(false);
     },[]);
+
+
     const handleSignUpClick =(e)=>{
+        console.log("userAccount",userAccount);
+        console.log("users.users.slice(0,4)", users.users.slice(0,4));
         e.preventDefault();
-        if(password !== rePassword){
-            setRePassword("You need to enter same passwords.")
+        if(users.users.slice(0,4).find(item=>item.email === userAccount) !== undefined){
+            setErrorMessage("You are already registed.")
+
+            userInfoDispatch({type: "TOGGLE_INFO_MODAL"});
+        }else if(password !== rePassword){
+            setErrorMessage("You need to enter same passwords.")
+            setPassword("");
+            setRePassword("");
         }else{
+            userInfoDispatch({type: "SET_ACCOUNT", payload: users[4]});
+
             setIsSuccesfulSignUp(true);
+            setErrorMessage("");
         }
     };
- 
     // useEffect(()=>{
     //     console.log("showPasswords", showPassword)
     // },[showPassword]);
     return(
-        <div>
+        <div className={styles.signup_page}>
 {  !isSuccesfulSignUp?      
         <form  onSubmit={handleSignUpClick}>
             {/* {!isRegistration &&

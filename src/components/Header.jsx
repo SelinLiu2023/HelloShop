@@ -38,7 +38,7 @@ export const Header = ()=>{
                 🛒
                 </NavLink>
 
-                <div to="/user" className={[styles.userInfoIcon, styles.userIcon].join(" ")} onClick={handleUserIconClick}>{userInfo.isLogedin === false ? 
+                <div to="/user" className={[styles.userInfoIcon, styles.userIcon].join(" ")} onClick={handleUserIconClick} >{userInfo.isLogedin === false ? 
                 <>&#128100;</> : 
                 <img src={userInfo.user.avatarUrl}/>}
                 </div>

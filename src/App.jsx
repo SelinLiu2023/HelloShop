@@ -4,9 +4,11 @@ import { ContextProvider } from "./utils/ContextProvider";
 import { UserContextProvider } from "./utils/UserContextProvider";
 import { Header } from "./components/Header";
 import styles from "./styles/App.module.scss";
+import { ProductsJsonContextProvider } from "./utils/ProductsJsonContext";
 
 export const App = () =>{
   return (
+    <ProductsJsonContextProvider>
     <ContextProvider>
       <UserContextProvider>
     <div className={styles.app}>
@@ -18,6 +20,7 @@ export const App = () =>{
     </div>
     </UserContextProvider>
     </ContextProvider>
+    </ProductsJsonContextProvider> 
   );
 };
 

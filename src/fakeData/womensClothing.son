@@ -1,0 +1,116 @@
+{
+  "products": [
+    {
+      "id": 15,
+      "category": "women's clothing",
+      "title": "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
+      "description": "Note: The Jackets is US standard size, Please choose size as your usual wear. Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweight and Warm. Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys) and 1 Hidden Pocket Inside. Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water, for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
+      "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
+      "price": 56.99,
+      "rating": {
+        "rate": 2.6,
+        "count": 235
+      },
+      "discount": 95,
+      "colors": ["Black", "Blue", "Red"],
+      "sizes": ["S", "M", "L", "XL"],
+      "stock": [
+        {
+          "color": "Black",
+          "size": "M",
+          "quantity": 14
+        },
+        {
+          "color": "Blue",
+          "size": "S",
+          "quantity": 5
+        },
+        {
+          "color": "Red",
+          "size": "XL",
+          "quantity": 7
+        }
+      ],
+      "reviews": [
+        {
+          "username": "janeDoe",
+          "comment": "Very versatile and warm jacket for winter!",
+          "rating": 5
+        },
+        {
+          "username": "emma1990",
+          "comment": "I wish the inner layer was a bit thicker.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "category": "women's clothing",
+      "title": "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
+      "description": "100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON",
+      "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
+      "price": 29.95,
+      "rating": {
+        "rate": 2.9,
+        "count": 340
+      },
+      "colors": ["Black", "Brown"],
+      "sizes": ["XS", "S", "M"],
+      "stock": [
+        {
+          "color": "Black",
+          "size": "XS",
+          "quantity": 10
+        },
+        {
+          "color": "Brown",
+          "size": "M",
+          "quantity": 20
+        }
+      ],
+      "reviews": [
+        {
+          "username": "sarahK",
+          "comment": "Great style but fits a bit snug.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "category": "women's clothing",
+      "title": "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
+      "description": "Lightweight perfect for trip or casual wear---Long sleeve with hooded, adjustable drawstring waist design. Button and zipper front closure raincoat, fully stripes Lined and The Raincoat has 2 side pockets are a good size to hold all kinds of things, it covers the hips, and the hood is generous but doesn't overdo it. Attached Cotton Lined Hood with Adjustable Drawstrings give it a real styled look.",
+      "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
+      "price": 39.99,
+      "rating": {
+        "rate": 3.8,
+        "count": 679
+      },
+      "discount": 100,  
+      "colors": ["Yellow", "Green", "Black"],
+      "sizes": ["M", "L"],
+      "stock": [
+        {
+          "color": "Yellow",
+          "size": "M",
+          "quantity": 12
+        },
+        {
+          "color": "Green",
+          "size": "L",
+          "quantity": 8
+        }
+      ],
+      "reviews": [
+        {
+          "username": "chloeSunshine",
+          "comment": "Bright and cheerful, perfect for rainy days.",
+          "rating": 5
+        }
+      ]
+    }
+    // Continue with other products similarly...
+  ]
+}
