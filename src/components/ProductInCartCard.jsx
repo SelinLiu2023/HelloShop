@@ -15,11 +15,11 @@ export const ProductInCartCard = ({productId, isInOrder})=>{
     const product = getProductById(productId);
     const productInCart = getProductInCartById(productId);
     const incrementQuantity = () => {
-        userInfoDispatch({ type: 'ADD_PRODUCT_IN_CART', payload:  productInCart  });
+        userInfoDispatch({ type: 'ADD_PRODUCT_TO_CART', payload:  productInCart  });
     };
 
     const decrementQuantity = () => {
-        userInfoDispatch({ type: 'REMOVE_PRODUCT_FROM_CART', payload: productInCart  });
+        userInfoDispatch({ type: 'DECREMENT_PRODUCT_IN_CART', payload: productInCart  });
     };
     const handleSelectProductClick = ()=>{
         if(isSelected)  
@@ -47,7 +47,13 @@ export const ProductInCartCard = ({productId, isInOrder})=>{
     // useEffect(()=>{
     //     console.log("productsInOrder:",userInfo.productsInOrder);
     // },[userInfo]);
-
+    const handleDeleteFromCart = ()=>{
+        if(product.isSelected){
+            userInfoDispatch({type: "UNSELECT_PRODUCT_FROM_ORDER", payload: productId});
+        }
+       
+        userInfoDispatch({type: "REMOVE_PRODUCT_FROM_CART", payload: productId});
+    }
     return (
     <div className={styles.product_in_cart_with_select}>
             {!isInOrder && <div className={styles.select} style={selectStyle} onClick={handleSelectProductClick}></div>}
@@ -67,6 +73,7 @@ export const ProductInCartCard = ({productId, isInOrder})=>{
                     <button onClick={incrementQuantity} disabled={isInOrder}>+</button>
                 </div>
             </div>
+            {!isInOrder && <button onClick={handleDeleteFromCart}>delete</button>}
     </div>
     );
 };

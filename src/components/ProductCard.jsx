@@ -12,15 +12,15 @@ export const ProductCard = ({product})=>{
     const handleClick = () => {
         navigate(`/products/${id}`);
     };
-    const handleAddToCart = ()=>{
-        userInfoDispatch({type: "ADD_PRODUCT_IN_CART", 
-                            payload: product});
+    // const handleAddToCart = ()=>{
+    //     userInfoDispatch({type: "ADD_PRODUCT_TO_CART", 
+    //                         payload: product});
                             
-    };
-    const handleRemoveFromCart = ()=>{
-            userInfoDispatch({type: "REMOVE_PRODUCT_FROM_CART", 
-                        payload: product});
-    }
+    // };
+    // const handleRemoveFromCart = ()=>{
+    //         userInfoDispatch({type: "DECREMENT_PRODUCT_IN_CART", 
+    //                     payload: product});
+    // }
     return (
         // <Link  to={`/products/${id}`}>
             <div className={styles.productCard}>
@@ -32,9 +32,10 @@ export const ProductCard = ({product})=>{
                 </div>
                 {/* <div className={styles.add_to_cart} onClick={handleAddToCart}>Add to Cart</div> */}
                 <div className={styles.button_box}>
-                    <button onClick={handleRemoveFromCart}>-</button>
+                    {/* <button onClick={handleRemoveFromCart}>-</button>
                     <p>{productInCart ? productInCart.quantity : 0}</p>
-                    <button onClick={handleAddToCart}>+</button>
+                    <button onClick={handleAddToCart}>+</button> */}
+                    <button onClick={handleClick}>See More Details</button>
                 </div>
             </div>
 
